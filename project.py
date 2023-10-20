@@ -1,4 +1,4 @@
-class node():
+class Node():
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
@@ -9,7 +9,6 @@ class node():
     
     def __str__(self):
         return f"{self.value}"
-    
     
 def invert(root):
     if not root.left and not root.right:
@@ -68,7 +67,7 @@ def print_bintree(tree):
         divisions_space = space_avalaible // 2 ** i + 1
         
         for node in nodes_at_level:
-            taketwo += f"{node.value : ^{divisions_space}}"
+            taketwo += f"{node.__str__() : ^{divisions_space}}"
         
         #another take on slashes
         slashes = ""
@@ -91,3 +90,86 @@ def print_bintree(tree):
             taketwo += slashes + "\n"
 
     return taketwo
+
+def inorder_traversal(root, current=None):
+    if current is None:
+        current = []
+        
+    if not root:
+        return []
+    
+    if not root.left and not root.right:
+        return [root]
+    
+    else:
+        current.extend(inorder_traversal(root.left))
+        current.append(root)
+        right = inorder_traversal(root.right )
+        current.extend(right)
+
+        return current
+
+
+def main():
+    g = Node("g",)
+    f = Node("f", )
+    d = Node("d",)
+    e = Node("e",)
+    c = Node("c", f, g)
+    b = Node("b", d, e)
+    a1 = Node("a", b, c) 
+
+    """ o = Node("o")
+    n = Node("n")
+    m = Node("m")
+    l = Node("l")
+    k = Node("k")
+    j = Node("j")
+    i = Node("i")
+    h = Node("h")
+    g = Node("g", n, o)
+    f = Node("f", l, m)
+    d = Node("d",h,i)
+    e = Node("e", j, k)
+    c = Node("c", f, g)
+    b = Node("b", d, e)
+    a2 = Node("a", b, c) 
+
+    p = Node("p")
+    q = Node("q")
+    r = Node("r")
+    s = Node("s")
+    t = Node("t")
+    u = Node("u")
+    v = Node("v")
+    w = Node("w")
+    x = Node("x")
+    y = Node("y") 
+    z = Node("z")
+    A = Node("A")
+    B = Node("B")
+    C = Node("C")
+    D = Node("D")
+    E = Node("E") 
+    F = Node("F")
+    o = Node("o", E, F)
+    n = Node("n", C, D)
+    m = Node("m", A, B)
+    l = Node("l", y, z)
+    k = Node("k", w, x)
+    j = Node("j" ,t, u)
+    i = Node("i", r, s)
+    h = Node("h", p, q)
+    g = Node("g", n, o)
+    f = Node("f", l, m)
+    d = Node("d",h,i)
+    e = Node("e", j, k)
+    c = Node("c", f, g)
+    b = Node("b", d, e)
+    a3 = Node("a", b, c) """
+
+    print(print_bintree(a1))
+
+    print(inorder_traversal(a1))
+
+main()
