@@ -106,7 +106,7 @@ to the right child node. `left` and `right` should be node instances or `None` e
 - ### Tree Traversals 
 
   ```
-        a       
+       a1       
       /   \      
     b       c    
    / \     / \   
@@ -116,13 +116,23 @@ to the right child node. `left` and `right` should be node instances or `None` e
   + #### Inorder traversal - `inorder_traversal(tree)`
       Returns the inorder traversal of a tree 
 
-      When called on tree above 
+      When called on tree above returns
+
+      `[d, b, e, a1, f, c, g]`
 
 
   + #### Preorder traversal - `preorder_traversal(tree)`
       Returns the preorder traversal of a tree 
 
+      When called on tree above returns
+
+      `[a1, b, d, e, c, f, g]`
+
   + #### Postorder traversal - `postorder_traversal(tree)`
       Returns the postorder traversal of a tree 
+
+      When called on tree above returns
+
+      `[d, e, b, f, g, c, a1]`
 
  

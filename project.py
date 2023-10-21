@@ -226,7 +226,7 @@ def main():
     b = Node("b", d, e)
     a3 = Node("a3", b, c)
 
-    tree = a2
+    tree = a1
 
     print(f"Printing tree {tree}")
     print(print_bintree(tree))
