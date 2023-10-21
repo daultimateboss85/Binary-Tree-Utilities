@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
@@ -6,14 +6,14 @@ class Node():
 
     def __repr__(self):
         return f"{self.value}"
-    
+
     def __str__(self):
         return f"{self.value}"
-    
+
     @property
     def left(self):
         return self._left
-    
+
     @left.setter
     def left(self, node):
         if not isinstance(node, Node) and node is not None:
@@ -23,25 +23,26 @@ class Node():
     @property
     def right(self):
         return self._right
-    
+
     @right.setter
     def right(self, node):
         if not isinstance(node, Node) and node is not None:
             raise ValueError("Children must be instances of Node class or None")
         self._right = node
-    
+
+
 def invert(root):
-    """Invert a binary tree """
+    """Invert a binary tree"""
     if not root.left and not root.right:
-        return 
-    
+        return
+
     else:
         if root.right:
             invert(root.right)
         if root.left:
             invert(root.left)
 
-        root.left,root.right = root.right,root.left
+        root.left, root.right = root.right, root.left
 
         return
 
@@ -55,61 +56,63 @@ def get_max_depth(root):
         return (root, 1)
 
     else:
-        max_depth = max([get_max_depth(root.left), get_max_depth(root.right)], key=lambda x: x[1])
+        max_depth = max(
+            [get_max_depth(root.left), get_max_depth(root.right)], key=lambda x: x[1]
+        )
         return (max_depth[0], max_depth[1] + 1)
 
 
 def get_nodes_bylevel(tree, level):
     """Return nodes at level, level where root node is level 1"""
     if level == 1:
-        return [tree] 
-    
+        return [tree]
+
     else:
         nodes = []
-        nodes_from_left =  get_nodes_bylevel(tree.left, level-1)
-        nodes_from_right = get_nodes_bylevel(tree.right, level-1)
+        nodes_from_left = get_nodes_bylevel(tree.left, level - 1)
+        nodes_from_right = get_nodes_bylevel(tree.right, level - 1)
 
         nodes.extend(nodes_from_left)
         nodes.extend(nodes_from_right)
 
         return nodes
 
+
 def print_bintree(tree):
     """Return string representation of binary tree"""
     max_depth = get_max_depth(tree)[1]
-    space_avalaible = 2**(max_depth+1) - 2
-    
-    #take 2 centering by 2 is divisions of space
+    space_avalaible = 2 ** (max_depth + 1) - 2
+
+    # take 2 centering by 2 is divisions of space
     taketwo = ""
     for i in range(0, max_depth):
-  
-        nodes_at_level = get_nodes_bylevel(tree, i+1)
-        divisions_space = space_avalaible // 2 ** i + 1
-        
+        nodes_at_level = get_nodes_bylevel(tree, i + 1)
+        divisions_space = space_avalaible // 2**i + 1
+
         for node in nodes_at_level:
             taketwo += f"{node.__str__() : ^{divisions_space}}"
-        
-        #another take on slashes
-        slashes = ""
-        num_slashes = 2**(i+1) #slashes on next line
 
-        if i != max_depth-1:
+        # another take on slashes
+        slashes = ""
+        num_slashes = 2 ** (i + 1)  # slashes on next line
+
+        if i != max_depth - 1:
             taketwo += "\n"
             for j in range(num_slashes):
-            
-                div_space = space_avalaible // 2**(i+2) + 1
+                div_space = space_avalaible // 2 ** (i + 2) + 1
 
-                if j % 2 == 0 :
+                if j % 2 == 0:
                     to_add = "/"
-                    slashes +=  " "*div_space + f"{ to_add: ^{div_space}}"
-        
+                    slashes += " " * div_space + f"{ to_add: ^{div_space}}"
+
                 else:
                     to_add = "\\"
-                    slashes += f"{ to_add: ^{div_space}}" + " "*div_space
+                    slashes += f"{ to_add: ^{div_space}}" + " " * div_space
 
             taketwo += slashes + "\n"
 
     return taketwo
+
 
 def inorder_traversal(root, current=None):
     """Return inorder traversal of a tree"""
@@ -118,17 +121,18 @@ def inorder_traversal(root, current=None):
 
     if not root:
         return []
-    
+
     if not root.left and not root.right:
         return [root]
-    
+
     else:
         current.extend(inorder_traversal(root.left))
         current.append(root)
-        right = inorder_traversal(root.right )
+        right = inorder_traversal(root.right)
         current.extend(right)
 
         return current
+
 
 def preorder_traversal(root, current=None):
     """Return preorder traversal of a tree"""
@@ -137,10 +141,9 @@ def preorder_traversal(root, current=None):
 
     if not root:
         return []
-    
+
     if not root.left and not root.right:
         return [root]
-    
 
     else:
         current.append(root)
@@ -148,18 +151,19 @@ def preorder_traversal(root, current=None):
         current.extend(preorder_traversal(root.right))
 
         return current
-    
+
+
 def postorder_traversal(root, current=None):
     """Return postorder traversal of a tree"""
     if current is None:
         current = []
-    
+
     if not root:
         return []
-    
+
     if not root.left and not root.right:
         return [root]
-    
+
     else:
         current.extend(postorder_traversal(root.left))
         current.extend(postorder_traversal(root.right))
@@ -169,13 +173,21 @@ def postorder_traversal(root, current=None):
 
 
 def main():
-    g = Node("g",)
-    f = Node("f", )
-    d = Node("d",)
-    e = Node("e",)
+    g = Node(
+        "g",
+    )
+    f = Node(
+        "f",
+    )
+    d = Node(
+        "d",
+    )
+    e = Node(
+        "e",
+    )
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a1 = Node("a1", b, c) 
+    a1 = Node("a1", b, c)
 
     o = Node("o")
     n = Node("n")
@@ -187,11 +199,11 @@ def main():
     h = Node("h")
     g = Node("g", n, o)
     f = Node("f", l, m)
-    d = Node("d",h,i)
+    d = Node("d", h, i)
     e = Node("e", j, k)
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a2 = Node("a2", b, c) 
+    a2 = Node("a2", b, c)
 
     p = Node("p")
     q = Node("q")
@@ -202,25 +214,25 @@ def main():
     v = Node("v")
     w = Node("w")
     x = Node("x")
-    y = Node("y") 
+    y = Node("y")
     z = Node("z")
     A = Node("A")
     B = Node("B")
     C = Node("C")
     D = Node("D")
-    E = Node("E") 
+    E = Node("E")
     F = Node("F")
     o = Node("o", E, F)
     n = Node("n", C, D)
     m = Node("m", A, B)
     l = Node("l", y, z)
     k = Node("k", w, x)
-    j = Node("j" ,t, u)
+    j = Node("j", t, u)
     i = Node("i", r, s)
     h = Node("h", p, q)
     g = Node("g", n, o)
     f = Node("f", l, m)
-    d = Node("d",h,i)
+    d = Node("d", h, i)
     e = Node("e", j, k)
     c = Node("c", f, g)
     b = Node("b", d, e)
@@ -237,7 +249,7 @@ def main():
     print(f"Nodes on 3rd level of {tree}: {get_nodes_bylevel(tree, 3)}")
 
     print()
-    print(f"Inorder traversal of {tree}: ",end ="")
+    print(f"Inorder traversal of {tree}: ", end="")
     print(inorder_traversal(tree))
 
     print("Preorder:", end=" ")
@@ -247,10 +259,11 @@ def main():
     print(postorder_traversal(tree))
 
     print("\n")
-    
+
     print(f"Inverting {tree}: ")
     invert(tree)
     print(print_bintree(tree))
+
 
 if __name__ == "__main__":
     main()

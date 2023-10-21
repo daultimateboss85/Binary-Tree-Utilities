@@ -27,45 +27,45 @@ to the right child node. `left` and `right` should be node instances or `None` e
 
   eg Calling `get_max_depth(Tree)` where Tree is below returns `(d, 3)` 
 
- ```
+  ```
         a       
       /   \
     b       c
-   / \     / \
+    / \     / \
   d   e   f   g 
- ``` 
+  ``` 
 
 - ### Get nodes in tree by level - `get_nodes_bylevel(root, level)`
   Supplying a level and this function returns a list of all nodes on that level of the tree
   where the root node is level 1
   eg Calling `get_nodes_bylevel(Tree, 2)` on Tree below returns `[d, e, f ,g]`
 
-```
-       a       
-     /   \
-   b       c
-  / \     / \
- d   e   f   g 
-```
+  ```
+        a       
+      /   \
+    b       c
+    / \     / \
+  d   e   f   g 
+  ```
 
 - ### Invert tree - `invert(root)`
   Given the root node to a binary tree, this function inverts the tree eg.
   With tree, Tree:
-```      
-       a       
-     /   \
-   b       c
-  / \     / \
- d   e   f   g 
-```
-`invert(Tree)` Returns
-```    
-       a
-     /   \
-   c       b
-  / \     / \
- g   f   e   d 
-```
+  ```      
+        a       
+      /   \
+    b       c
+    / \     / \
+  d   e   f   g 
+  ```
+  `invert(Tree)` Returns
+  ```    
+        a
+      /   \
+    c       b
+    / \     / \
+  g   f   e   d 
+  ```
 
 - ### Print tree - `print_bintree(root)`
   Given the root node to a binary tree, this function returns string representation of the tree which can then be printed. This string is well spaced and allows for easy visualizations of the workings on a binary tree. 
@@ -73,31 +73,31 @@ to the right child node. `left` and `right` should be node instances or `None` e
   The following trees displayed are the output of the function when called on various trees 
   (see nodes.txt. Trees displayed are a1, a2, a3 respectively).
 
-```
-       a       
-     /   \      
-   b       c    
-  / \     / \   
- d   e   f   g 
+  ```
+        a       
+      /   \      
+    b       c    
+    / \     / \   
+  d   e   f   g 
 
-               a
-           /       \
-       b               c        
-     /   \           /   \      
-   d       e       f       g
-  / \     / \     / \     / \
- h   i   j   k   l   m   n   o
+                a
+            /       \
+        b               c        
+      /   \           /   \      
+    d       e       f       g
+    / \     / \     / \     / \
+  h   i   j   k   l   m   n   o
 
-                               a
-                       /               \
-               b                               c
-           /       \                       /       \
-       d               e               f               g
-     /   \           /   \           /   \           /   \
-   h       i       j       k       l       m       n       o
-  / \     / \     / \     / \     / \     / \     / \     / \
- p   q   r   s   t   u   w   x   y   z   A   B   C   D   E   F
-``` 
+                                a
+                        /               \
+                b                               c
+            /       \                       /       \
+        d               e               f               g
+      /   \           /   \           /   \           /   \
+    h       i       j       k       l       m       n       o
+    / \     / \     / \     / \     / \     / \     / \     / \
+  p   q   r   s   t   u   w   x   y   z   A   B   C   D   E   F
+  ``` 
 
   For large trees the spacing at the top is a bit much, however with all trees the spacing allows for easy visualization of trees.
 
