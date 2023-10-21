@@ -94,7 +94,7 @@ def print_bintree(tree):
 def inorder_traversal(root, current=None):
     if current is None:
         current = []
-        
+
     if not root:
         return []
     
@@ -109,6 +109,41 @@ def inorder_traversal(root, current=None):
 
         return current
 
+def preorder_traversal(root, current=None):
+    if current is None:
+        current = []
+
+    if not root:
+        return
+    
+    if not root.left and not root.right:
+        return [root]
+    
+
+    else:
+        current.append(root)
+        current.extend(preorder_traversal(root.left))
+        current.extend(preorder_traversal(root.right))
+
+        return current
+    
+def postorder_traversal(root, current=None):
+    if current is None:
+        current = []
+    
+    if not root:
+        return
+    
+    if not root.left and not root.right:
+        return [root]
+    
+    else:
+        current.extend(postorder_traversal(root.left))
+        current.extend(postorder_traversal(root.right))
+        current.append(root)
+
+        return current
+
 
 def main():
     g = Node("g",)
@@ -117,9 +152,9 @@ def main():
     e = Node("e",)
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a1 = Node("a", b, c) 
+    a1 = Node("a1", b, c) 
 
-    """ o = Node("o")
+    o = Node("o")
     n = Node("n")
     m = Node("m")
     l = Node("l")
@@ -133,7 +168,7 @@ def main():
     e = Node("e", j, k)
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a2 = Node("a", b, c) 
+    a2 = Node("a2", b, c) 
 
     p = Node("p")
     q = Node("q")
@@ -166,10 +201,33 @@ def main():
     e = Node("e", j, k)
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a3 = Node("a", b, c) """
+    a3 = Node("a3", b, c)
 
-    print(print_bintree(a1))
+    tree = a2
 
-    print(inorder_traversal(a1))
+    print(f"Printing tree {tree}")
+    print(print_bintree(tree))
 
-main()
+    print()
+    print(f"Max depth of {tree}: {get_max_depth(tree)}")
+
+    print(f"Nodes on 3rd level of {tree}: {get_nodes_bylevel(tree, 3)}")
+
+    print()
+    print(f"Inorder traversal of {tree}: ",end ="")
+    print(inorder_traversal(tree))
+
+    print("Preorder:", end=" ")
+    print(preorder_traversal(tree))
+
+    print("Postorder:", end=" ")
+    print(postorder_traversal(tree))
+
+    print("\n")
+    
+    print(f"Inverting {tree}: ")
+    invert(tree)
+    print(print_bintree(tree))
+
+if __name__ == "__main__":
+    main()
