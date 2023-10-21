@@ -1,8 +1,8 @@
 # Binary Tree Utilities
 
-#### Video Demo: <URL HERE>
+### Video Demo: <URL HERE>
 
-#### Description: Group of functions that help when working with binary trees
+### Description: Group of functions that help when working with binary trees
 
 ### Background To project
 
@@ -16,11 +16,11 @@ Nodes are intialised with the following call:
   `node = Node(value, left, right)`
 
 Where value is the value of the node, left is a pointer to the left child node and right a pointer
-to the right child node
+to the right child node. `left` and `right` should be node instances or `None` else a `ValueError` is raised.
 
 ### Main Features
 
-- #### Get maximum depth of tree
+- ### Get maximum depth of tree
   `get_max_depth(root)`
   Given the root of a binary tree this function allows to get the maximum depth of a tree.
   Returns a tuple with item at first index being one leaf node with maximum depth and item at second index being an integer representing maximum depth of tree
@@ -35,7 +35,7 @@ to the right child node
   d   e   f   g 
  ``` 
 
-- #### Get nodes in tree by level - `get_nodes_bylevel(root, level)`
+- ### Get nodes in tree by level - `get_nodes_bylevel(root, level)`
   Supplying a level and this function returns a list of all nodes on that level of the tree
   where the root node is level 1
   eg Calling `get_nodes_bylevel(Tree, 2)` on Tree below returns `[d, e, f ,g]`
@@ -48,7 +48,7 @@ to the right child node
  d   e   f   g 
 ```
 
-- #### Invert tree - `invert(root)`
+- ### Invert tree - `invert(root)`
   Given the root node to a binary tree, this function inverts the tree eg.
   With tree, Tree:
 ```      
@@ -67,7 +67,7 @@ to the right child node
  g   f   e   d 
 ```
 
-- #### Print tree - `print_bintree(root)`
+- ### Print tree - `print_bintree(root)`
   Given the root node to a binary tree, this function returns string representation of the tree which can then be printed. This string is well spaced and allows for easy visualizations of the workings on a binary tree. 
 
   The following trees displayed are the output of the function when called on various trees 
@@ -102,3 +102,27 @@ to the right child node
   For large trees the spacing at the top is a bit much, however with all trees the spacing allows for easy visualization of trees.
 
   PS: It is recommended to not use characters that are longer than 4 digits for the best display.
+
+- ### Tree Traversals 
+
+  ```
+        a       
+      /   \      
+    b       c    
+   / \     / \   
+  d   e   f   g 
+  ```
+
+  + #### Inorder traversal - `inorder_traversal(tree)`
+      Returns the inorder traversal of a tree 
+
+      When called on tree above 
+
+
+  + #### Preorder traversal - `preorder_traversal(tree)`
+      Returns the preorder traversal of a tree 
+
+  + #### Postorder traversal - `postorder_traversal(tree)`
+      Returns the postorder traversal of a tree 
+
+ 

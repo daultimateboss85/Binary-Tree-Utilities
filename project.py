@@ -10,7 +10,28 @@ class Node():
     def __str__(self):
         return f"{self.value}"
     
+    @property
+    def left(self):
+        return self._left
+    
+    @left.setter
+    def left(self, node):
+        if not isinstance(node, Node) and node is not None:
+            raise ValueError("Children must be instances of Node class or None")
+        self._left = node
+
+    @property
+    def right(self):
+        return self._right
+    
+    @right.setter
+    def right(self, node):
+        if not isinstance(node, Node) and node is not None:
+            raise ValueError("Children must be instances of Node class or None")
+        self._right = node
+    
 def invert(root):
+    """Invert a binary tree """
     if not root.left and not root.right:
         return 
     
@@ -26,6 +47,7 @@ def invert(root):
 
 
 def get_max_depth(root):
+    """Get Maximum depth of Tree with root node root"""
     if not root:
         return (0, -1)
 
@@ -38,7 +60,7 @@ def get_max_depth(root):
 
 
 def get_nodes_bylevel(tree, level):
-    #function that gets nodes from tree by level
+    """Return nodes at level, level where root node is level 1"""
     if level == 1:
         return [tree] 
     
@@ -53,9 +75,8 @@ def get_nodes_bylevel(tree, level):
         return nodes
 
 def print_bintree(tree):
-    #first determine max depth
+    """Return string representation of binary tree"""
     max_depth = get_max_depth(tree)[1]
-   
     space_avalaible = 2**(max_depth+1) - 2
     
     #take 2 centering by 2 is divisions of space
@@ -63,7 +84,6 @@ def print_bintree(tree):
     for i in range(0, max_depth):
   
         nodes_at_level = get_nodes_bylevel(tree, i+1)
-
         divisions_space = space_avalaible // 2 ** i + 1
         
         for node in nodes_at_level:
@@ -92,6 +112,7 @@ def print_bintree(tree):
     return taketwo
 
 def inorder_traversal(root, current=None):
+    """Return inorder traversal of a tree"""
     if current is None:
         current = []
 
@@ -110,11 +131,12 @@ def inorder_traversal(root, current=None):
         return current
 
 def preorder_traversal(root, current=None):
+    """Return preorder traversal of a tree"""
     if current is None:
         current = []
 
     if not root:
-        return
+        return []
     
     if not root.left and not root.right:
         return [root]
@@ -128,11 +150,12 @@ def preorder_traversal(root, current=None):
         return current
     
 def postorder_traversal(root, current=None):
+    """Return postorder traversal of a tree"""
     if current is None:
         current = []
     
     if not root:
-        return
+        return []
     
     if not root.left and not root.right:
         return [root]
