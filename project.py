@@ -173,22 +173,14 @@ def postorder_traversal(root, current=None):
 
 
 def main():
-    g = Node(
-        "g",
-    )
-    f = Node(
-        "f",
-    )
-    d = Node(
-        "d",
-    )
-    e = Node(
-        "e",
-    )
+    """     g = Node("g")
+    f = Node("f")
+    d = Node("d")
+    e = Node("e")
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a1 = Node("a1", b, c)
-
+    a1 = Node("a1", b, c) """
+    
     o = Node("o")
     n = Node("n")
     m = Node("m")
@@ -204,7 +196,7 @@ def main():
     c = Node("c", f, g)
     b = Node("b", d, e)
     a2 = Node("a2", b, c)
-
+    """
     p = Node("p")
     q = Node("q")
     r = Node("r")
@@ -236,9 +228,9 @@ def main():
     e = Node("e", j, k)
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a3 = Node("a3", b, c)
+    a3 = Node("a3", b, c) """
 
-    tree = a1
+    tree = a2
 
     print(f"Printing tree {tree}")
     print(print_bintree(tree))
