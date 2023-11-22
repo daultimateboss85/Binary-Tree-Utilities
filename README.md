@@ -1,7 +1,5 @@
 # Binary Tree Utilities
 
-### Video Demo: <https://youtu.be/lwlzhnnQoDY>
-
 ### Description: Group of functions that help when working with binary trees
 
 ### Background To project
