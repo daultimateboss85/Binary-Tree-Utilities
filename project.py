@@ -172,15 +172,40 @@ def postorder_traversal(root, current=None):
         return current
 
 
+def tree_from_arr(array: list) -> Node:
+    """Return Tree from array"""
+
+    start = 0
+    end = len(array)
+
+    def arr_to_tree_improved(start: int, end: int) -> Node:
+        if end == start:
+            return None
+
+        if end - start == 1:
+            return Node(array[start])
+
+        middle: int = (start + end) // 2
+
+        root = Node(array[middle])
+
+        root.right = arr_to_tree_improved(middle + 1, end)
+        root.left = arr_to_tree_improved(start, middle)
+
+        return root
+
+    return arr_to_tree_improved(start, end)
+
+
 def main():
-    """     g = Node("g")
+    """g = Node("g")
     f = Node("f")
     d = Node("d")
     e = Node("e")
     c = Node("c", f, g)
     b = Node("b", d, e)
-    a1 = Node("a1", b, c) """
-    
+    a1 = Node("a1", b, c)"""
+
     o = Node("o")
     n = Node("n")
     m = Node("m")
